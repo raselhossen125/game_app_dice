@@ -40,15 +40,24 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _startWidget() {
-    return ElevatedButton(
-      onPressed: () {
+    return GestureDetector(
+      onTap: () {
         setState(() {
           _hasGameStarted = true;
         });
       },
-      child: Text(
-        'Start Game',
-        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+      child: Container(
+        height: 45,
+        width: 130,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(30), color: Colors.deepOrange),
+        child: Center(
+          child: Text(
+            'Start Game',
+            style: TextStyle(
+                fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
+          ),
+        ),
       ),
     );
   }
@@ -86,20 +95,24 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         Text(
           'Sum : $_diceSum',
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.deepOrange),
         ),
         if (_point > 0)
           Text(
             'Point : $_point',
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.deepOrange),
           ),
         if (_isGameOver)
           Text(
             '$_result',
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.green),
           ),
-        if (_isGameOver)
-          ElevatedButton(
+        if (_isGameOver)OutlinedButton(
+            style: OutlinedButton.styleFrom(
+              primary: Colors.green,
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              side: BorderSide(color: Colors.green),
+            ),
             onPressed: _reset,
             child: Text(
               'Play Again',
